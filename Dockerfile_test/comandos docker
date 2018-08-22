@@ -1,0 +1,105 @@
+DOCKER COMANDOS
+
+RUTA DE ARCHIVOS O MODULOS DENTRO DEL CONTENEDOR DE ODOO:
+ 
+cd /usr/lib/python3/dist-packages/odoo/addons
+
+COMANDO PARA CREAR UN CONTENER PARA POSTGRES:
+docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db-odoo postgres:9.5
+
+
+COMANDO PARA CREAR UN CONTENEDOR DE ODOO EN UN REPOSITORIO LOCAL:
+docker run --name odoo_dllo -v /home/dfmarquez/Documentos/Repositorios/odoo_dllo/:/opt/odoo --link db_odoo_dllo:db_odoo_dllo -p 8069:8069 -p 8072:8072 -i -t odoo:11 bash
+
+
+p 8069:8069 \
+-p 8072:8072 \
+--name odoo \
+--link db-odoo:db \
+-t itprojectsllc/install-odoo:10.0
+
+
+
+INGRESAR A CUALQUIER CONTENDEDOR POR EL BASH:
+
+- $ docker ps
+
+
+- CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+665b4a1e17b6 webserver:latest /bin/bash ... ... 22/tcp, 80/tcp webserver_rails
+- $ docker exec -i -t 665b4a1e17b6 /bin/bash 
+
+
+- $ root@665b4a1e17b6:/
+
+
+
+Configurar las variables de entorno con docker ojo!!!!
+
+
+
+################# run interactivo ###########################################################
+
+Probemos de ejecutar y usar una terminal en el contenedor:
+
+$ docker run -t -i ubuntu:14.04 /bin/bash
+
+-t: Asigna una tty
+-i: Nos comunicamos con el contenedor de modo interactivo.
+
+NOTA: Al salir del modo interactivo el contenedor se detendrá.
+
+#############################################################################################
+
+docker build -f /home/dfmarquez/Documentos/Repositorios/docker/Dockerfile
+
+
+ee3b5c01f07e
+
+
+docker run --name odoo_dllo -v /home/dfmarquez/Documentos/Repositorios/odoo_dllo/:/opt/odoo --link db_odoo_dllo:db_odoo_dllo -p 8069:8069 -p 8072:8072 -i -t odoo:11 bash
+docker run --name odoo_dllo  --link db_odoo_dllo:db_odoo_dllo -p 8069:8069 -p 8072:8072 -i -t odoo:11.0
+
+docker run \
+-p 8069:8069 \
+-p 8072:8072 \
+--name odoo \
+--link db-odoo:db \
+-t itprojectsllc/install-odoo:10.0
+
+docker run -d -e POSTGRES_USER=odoo -e POSTGRES_USER=odoo --name db postgres ****
+
+docker run -p 0.0.0.0:8069:8069 --name odoo --link db:db -t odoo:10.0  ****
+
+
+docker run -p 0.0.0.0:8069:8069 --name odoo && \ chmod -R 777 /usr/lib/python2.7/dist-packages/odoo/addons/ && \ --link db:db -t odoo:10.0
+
+
+docker exec -i -t 618ed3b565cb -v /shared-data:/usr/lib/python2.7/dist-packages/odoo/addons/   ****
+docker -v /shared-data:/shared-data
+
+
+ruta adoons dentro del contenedor: cd /usr/lib/python2.7/dist-packages/odoo/addons/
+
+&& \ chmod -R 777 /usr/lib/python2.7/dist-packages/odoo/addons/ && \
+
+
+
+
+docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db-saas postgres:9.4
+
+docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres:9.5
+
+
+
+docker run --name icaroerp -v /home/dfmarquez/Documentos/Repositorios/icaroerp/odoo/11:/opt/odoo --link db:db -p 8069:8069 -p 8072:8072 -i -t odoo:11.0 bash 
+
+
+
+docker run --name odoo_dllo -v /home/diego/Documentos/Repositorios/odoo_dllo/odoo/10:/opt/odoo --link db:db -p 8069:8069 -p 8072:8072 -i -t odoo:10.0 bash
+
+docker run --name utilfy -v /home/diego/Documentos/Repositorios/utilfy:/opt/odoo --link db:db_saas -p 8069:8069 -p 8072:8072 -i -t odoo:11 bash
+
+
+
+
