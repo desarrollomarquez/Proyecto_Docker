@@ -1,0 +1,54 @@
+docker network create odoo-saas
+
+docker run \
+-d \
+-e POSTGRES_USER=odoo \
+-e POSTGRES_PASSWORD=odoo \
+--network=odoo-saas \
+--name db-saas  \
+postgres:9.5
+
+docker run \
+--name odoo \
+--network=odoo-saas \
+-e ODOO_MASTER_PASS=admin \
+-e DB_PORT_5432_TCP_ADDR=db-saas \
+-t itprojectsllc/install-odoo:11.0
+
+docker exec \
+ -u root \
+ -t odoo \
+sed -i 's/dbfilter.*/dbfilter = ^%h$/' /mnt/config/odoo-server.conf
+
+docker restart odoo
+
+
+docker run  \
+-d \
+-p 80:80 \
+--name saas-nginx \
+--network=odoo-saas \
+-t itprojectsllc/docker-odoo-nginx
+
+
+INIT_SAAS_TOOLS_VALUE=' \
+--portal-create \
+--server-create \
+--plan-create \
+--odoo-script=/mnt/odoo-source/odoo-bin \
+--odoo-config=/mnt/config/odoo-server.conf \
+--portal-db-name=portal \
+--server-db-name=server-1 \
+--server-hosts-template={dbname}.{base_saas_domain_1} \
+--plan-template-db-name=template-1 \
+--plan-clients=demo-%i \
+' && docker exec -u root -t odoo /bin/bash \
+-c "export INIT_SAAS_TOOLS='$INIT_SAAS_TOOLS_VALUE'; bash /install-odoo-saas.sh"
+
+
+
+
+
+
+
+
