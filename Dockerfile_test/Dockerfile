@@ -3,7 +3,7 @@
 # Based on Ubuntu 16.04
 ############################################################
 FROM ubuntu:16.04
-MAINTAINER Diego Marquez
+MAINTAINER Diego Marquez "desarrollo.marquez@gmail.com"
 RUN apt-get update &&\
     apt-get install -y ssh wget nano curl nginx postgresql
 RUN  apt-get install -y  ca-certificates subversion git bzr bzrtools python3-pip postgis libssl-dev libffi-dev && \
