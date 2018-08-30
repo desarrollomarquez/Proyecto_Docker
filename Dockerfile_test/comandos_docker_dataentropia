@@ -1,0 +1,21 @@
+
+#############################################################################################
+DOCKERIZAR APPS
+#############################################################################################
+IMAGE NGINX
+
+Ejecute el siguiente comando para obtener la imagenes de Postgres9.5, Odoo y Nginx:
+
+
+$ docker pull postgres:9.5
+$ docker pull odoo:11
+$ docker pull nginx
+
+Ejecuta los siguientes comandos para crear los contenedores:
+
+docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres:9.5
+docker run -p 8069:8069 --name odoo --link db:db -t odoo
+docker run --name docker-nginx -d  -p 80:80 -i -t nginx
+
+#############################################################################################
+
