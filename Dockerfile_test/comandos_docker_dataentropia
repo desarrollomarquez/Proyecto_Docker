@@ -28,10 +28,22 @@ ssh -p  root@167.114.131.127
 
 
 [Service]
-Environment="HTTP_PROXY=http://icaro.dataentropia.com:8080" HTTPS_PROXY=http://icaro.dataentropia.com:8080"
+Environment="HTTP_PROXY=http://icaro.dataentropia.com:80" HTTPS_PROXY=http://icaro.dataentropia.com:80"
 
 [Service]
-Environment="HTTPS_PROXY=http://icaro.dataentropia.com:8080"
+Environment="HTTPS_PROXY=http://icaro.dataentropia.com:80"
+
+icaro.dataentropia.com
+
+docker run hello-world --build-arg HTTP_PROXY="http://icaro.dataentropia.com:80"
+
+[Service]
+Environment="HTTP_PROXY=https://icaro.dataentropia.com:8080/"
+Environment="HTTPS_PROXY=https://icaro.dataentropia.com:8080/"
+Environment="NO_PROXY=localhost,127.0.0.1,localaddress,.localdomain.com"
+
+
+export http_proxy="http://icaro.dataentropia.com:8080/"
 
 dockerd --debug \
   --tls=true \
