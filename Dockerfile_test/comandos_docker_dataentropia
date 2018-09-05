@@ -68,3 +68,13 @@ nameserver 1.0.0.1
 nameserver 8.8.8.8
 
 
+cambiar firewall centos:
+
+firewall-cmd --zone=public --add-port=8080/tcp --permanent
+
+reload cambios:
+
+firewall-cmd --reload
+
+
+
