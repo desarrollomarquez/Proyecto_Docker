@@ -102,7 +102,22 @@ reload cambios:
 
 firewall-cmd --reload
 
+docker run --name docker-nginx -d  -p http://167.114.131.127:8080 -p https://167.114.131.127:8080 -i -t nginx
+
+docker run --name nginx --env http_proxy=http://icaro.dataentropia.com:8080/ --env https_proxy=https://icaro.dataentropia.com:8080/
 
 
-docker pull nginx --rm --env http_proxy=http://icaro.dataentropia.com:8080/ --env https_proxy=https://icaro.dataentropia.com:8080/
+
+
+
+
+
+###############################################################################################################################
+
+#############################################################################################
+
+docker network create saas-demo-network
+
+docker run --name odoo-nginx -d  -p 8080:80 --network saas-demo-network -i -t nginx
+
 
