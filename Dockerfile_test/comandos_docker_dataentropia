@@ -11,6 +11,23 @@ $ docker pull postgres:9.5
 $ docker pull odoo:11
 $ docker pull nginx
 
+Muestra informaciones de bajo nivel del contenedor o la imagen:
+
+
+$ docker inspect naughty_morse
+
+$ docker inspect naughty_morse | grep IPAddress
+
+Exporta el contenido del sistema de archivo de un contenedor a un archivo tar
+
+$ docker export naughty_morse > kalicont.tar
+
+$ docker export -o kalicont.tar naughty_morse
+
+Detiene un contenedor enviando un SIGKILL.
+
+$ docker kill naughty_morse
+
 Ejecuta los siguientes comandos para crear los contenedores:
 
 docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres:9.5
