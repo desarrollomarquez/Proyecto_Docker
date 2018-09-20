@@ -130,7 +130,10 @@ docker run --name nginx --env http_proxy=http://icaro.dataentropia.com:8080/ --e
 
 
 ###############################################################################################################################
-
+mv /etc/systemd/system/docker.service.d/http-proxy.conf  /etc/systemd/system/docker.service.d/http-proxy.conf.bck
+systemctl daemon-reload
+systemctl restart docker
+Nota//: Dejar el proxy vacio....
 #############################################################################################
 
 docker network create saas-demo-network
