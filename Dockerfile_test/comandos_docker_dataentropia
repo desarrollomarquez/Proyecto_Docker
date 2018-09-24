@@ -8,7 +8,7 @@ Ejecute el siguiente comando para obtener la imagenes de Postgres9.5, Odoo y Ngi
 
 
 $ docker pull postgres:9.5
-$ docker pull odoo:11
+$ docker pull odoo:10
 $ docker pull nginx
 
 Muestra informaciones de bajo nivel del contenedor o la imagen:
@@ -31,15 +31,16 @@ $ docker kill naughty_morse
 Ejecuta los siguientes comandos para crear los contenedores:
 
 docker run -d -e POSTGRES_USER=odoo -e POSTGRES_PASSWORD=odoo --name db postgres:9.5
-docker run -p 8069:8069 --name odoo --link db:db -t odoo
+docker run -p 8069:8069 --name odoo  --link db:db -t odoo:10
 docker run --name docker-nginx -d  -p 80:80 -i -t nginx
 
-docker run -v /home/diego/Documentos/Repositorios/dataentropia/etc/:/etc/ -p 8069:8069 --name odoo --link db:db -t odoo
-
+docker run -v /home/diego/Documentos/Repositorios/dataentropia/:/etc/ -p 8069:8069 --name odoo --link db:db -t odoo
+/home/diego/Documentos/Repositorios/dataentropia/etc
 #############################################################################################
 VPS
 #############################################################################################
 
+docker run -p 8069:8069 --name odoo  --link db:db -t odoo:10
 
 ssh -p  root@167.114.131.127
 
@@ -231,5 +232,8 @@ ff02::1	ip6-allnodes
 ff02::2	ip6-allrouters
 172.17.0.2	db c22daad13308
 172.17.0.3	cfa1b1fb794c
+
+docker run -v /home/diego/Documentos/Repositorios/dataentropia/etc/hosts:/etc/hosts -p 8069:8069 --name odoo --link db:db -t odoo:10
+
 
 
