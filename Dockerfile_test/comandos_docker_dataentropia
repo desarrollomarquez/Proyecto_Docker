@@ -164,13 +164,14 @@ Ejecute este comando para descargar la última versión de Docker Compose:
 
 sudo curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
+sudo mount /tmp -o remount,exec
+
 docker-compose --version
 
 
 crear docker-compose para word-press:
 
 version: '3.3'
-
 services:
    db:
      image: mysql:5.7
@@ -197,6 +198,10 @@ services:
 volumes:
     db_data:
 
+Ejecutar el composer...
+
+docker-compose up -d
+
 #############################################################################################
 DOCKER - RASPBERRY
 #############################################################################################
@@ -210,7 +215,7 @@ Linux 4.4.0-21-generic #37-Ubuntu SMP Mon Apr 18 18:33:37 UTC 2016 x86_64 x86_64
 
 curl -sSL https://get.docker.com |sh
 
-
+#############################################################################################
 
 
 
