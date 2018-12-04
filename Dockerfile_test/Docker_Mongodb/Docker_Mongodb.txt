@@ -1,0 +1,21 @@
+###########  DOCKER-MONGODB #########
+- La instalación de MongoDB la haremos sobre Docker haciendo uso de docker-compose, El nombre de nuestro contenedor será mongodb_invent:
+docker-compose.yml -> Nombre del docker-compose
+
+		mongo: 
+		  container_name: mongodb_invent
+		  image: mongo
+		  ports:
+			- "27017:27017"
+
+- Arrancamos nuestro contenedor docker a través de docker-compose
+
+docker-compose up
+
+- Usando el comando use seleccionamos la base de datos con la que vamos a trabajar. Si no existe se crea.
+
+use development
+
+
+
+
