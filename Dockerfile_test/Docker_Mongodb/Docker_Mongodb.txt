@@ -16,6 +16,19 @@ docker-compose up
 
 use development
 
+docker run -d -p 27017:27017 --name mongodb_invent mongo:latest
+
+# Redes
+
+ps -ef | grep -i docker
+
+netstat -putnoea | grep -i docker
+
+docker inspect 30e63d67f3bf | grep -i tcp
+
+firewall-cmd --permanent --add-port=22140/tcp
+
+firewall-cmd --reload
 
 
 
