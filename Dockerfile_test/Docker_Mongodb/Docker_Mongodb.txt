@@ -22,15 +22,15 @@ docker run -d -p 27017:27017 --name mongodb_invent mongo:latest
 
 docker images
 
-docker run -dti --name web1 -p 27017:27017 525bd2016729
+docker run -dti --name web1 -P 525bd2016729
 
 ps -ef | grep -i docker
 
 netstat -putnoea | grep -i docker
 
-docker inspect 30e63d67f3bf | grep -i tcp
+docker inspect 6f085dba2fbd | grep -i tcp
 
-firewall-cmd --permanent --add-port=22140/tcp
+firewall-cmd --permanent --add-port=32768/tcp
 
 firewall-cmd --reload
 
