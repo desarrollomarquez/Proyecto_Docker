@@ -20,6 +20,10 @@ docker run -d -p 27017:27017 --name mongodb_invent mongo:latest
 
 # Redes
 
+docker images
+
+docker run -dti --name web1 -p 27017:27017 525bd2016729
+
 ps -ef | grep -i docker
 
 netstat -putnoea | grep -i docker
