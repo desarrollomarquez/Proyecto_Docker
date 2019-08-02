@@ -276,3 +276,11 @@ yarn:
     links:
      - namenode:hdfs-namenode
 
+#############################################################################################
+DOCKER - PYTHON 3
+#############################################################################################
+
+
+docker run --name mdvrp -v /home/diego/MDVRP:/home/diego_docker/   -i -t python:3 bash
+
+docker exec  -i -t 9db9ac9ebbd3 bash
