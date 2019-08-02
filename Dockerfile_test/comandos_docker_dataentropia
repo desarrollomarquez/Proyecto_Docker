@@ -280,7 +280,8 @@ yarn:
 DOCKER - PYTHON 3
 #############################################################################################
 
-
+-Crear contenedor simple para alojar scrits:
 docker run --name mdvrp -v /home/diego/MDVRP:/home/diego_docker/   -i -t python:3 bash
 
+-Ingreso a contenedor:
 docker exec  -i -t 9db9ac9ebbd3 bash
